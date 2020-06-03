@@ -10,6 +10,9 @@ import com.company.dao.inter.CountryDaoInter;
 import com.company.dao.inter.UserDaoInter;
 import com.company.entity.Country;
 import com.company.entity.User;
+import com.company.entity.UserSkill;
+
+import java.util.List;
 
 /**
  * @author xeyal
@@ -31,7 +34,13 @@ public class Main {
 //                u.setBirthPlace(new Country(1,"Azerbaijan","Baku"));
 //                u.setNationality(new Country(1,"Azerbaijan","Baku"));
 //        userdao.addUser(u);
-        userdao.removeUser(22);
+//        userdao.removeUser(22);
+        List<UserSkill> skillList=userdao.getById(1).getSkills();
+        for(UserSkill s:skillList){
+            System.out.println(s.getSkill().getName());
+        }
+
+
 
 //        UserSkillDaoInter daoInter=Context.instanceUserSkillDao();
 //        List<UserSkill> allSkillByUserId = daoInter.getAllSkillByUserId(1);

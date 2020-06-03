@@ -102,12 +102,12 @@
         <input type="text" id="profile_description" name="profile_description"
                value="<%=u.getProfileDesc() == null ? "" : u.getProfileDesc()%>"/>
 
-        <label for="birth_date">Birth Date</label>
-        <input type="date" id="birth_date" name="birth_date"
+        <label for="birthdate">Birthdate</label>
+        <input type="date" id="birthdate" name="birthdate"
                value="<%=u.getBirthDate() == null ? "" : u.getBirthDate()%>"/>
     <%=u.getBirthDate() == null ? "" : u.getBirthDate()%>
-        <label for="birth_place">Birth Place</label>
-        <input type="text" id="birth_place" name="birth_place"
+        <label for="birthplace">Birthplace</label>
+        <input type="text" id="birthplace" name="birthplace"
                value="<%=u.getBirthPlace() == null ? "" : u.getBirthPlace().getName()%>"/>
 
         <label for="phone">Phone</label>

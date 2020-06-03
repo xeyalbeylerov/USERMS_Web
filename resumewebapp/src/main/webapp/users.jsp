@@ -1,6 +1,4 @@
-<%@ page import="com.company.dao.inter.UserDaoInter" %>
 <%@ page import="com.company.entity.User" %>
-<%@ page import="com.company.main.Context" %>
 <%@ page import="java.util.List" %>
 
 
@@ -16,7 +14,7 @@
 </head>
 <body>
 <%
-//    UserDaoInter userDao = Context.instanceUserDao();
+    //    UserDaoInter userDao = Context.instanceUserDao();
 //
 //    String name = request.getParameter("name");
 //    String surname = request.getParameter("surname");
@@ -30,7 +28,7 @@
 ////    out.print("surname " + surname);
 ////    out.print("nation " + nationalityId);
 //    List<User> lists = userDao.getAll(name, surname, nationalityId);
-    List<User> lists=(List<User>)request.getAttribute("userList");
+    List<User> lists = (List<User>) request.getAttribute("userList");
 
 
 %>
@@ -49,6 +47,10 @@
             </div>
             <div class="form-group mb-2">
                 <input class="btn btn-primary" type="submit" name="search" value="Search">
+
+                <button onclick="idForAddModal()" class="btn btn-success mx-2" type="button" value="add" data-toggle="modal"
+                        data-target="#addModal">Add
+                </button>
             </div>
         </form>
 
@@ -83,7 +85,8 @@
                     </td>
                     <td style="width:5px;">
 
-                        <button onclick="idForDeleteModal('<%=list.getId()%>')" class="btn btn-danger" type="button" value="delete" data-toggle="modal"
+                        <button onclick="idForDeleteModal('<%=list.getId()%>')" class="btn btn-danger" type="button"
+                                value="delete" data-toggle="modal"
                                 data-target="#deleteModal">Delete
                         </button>
 
@@ -91,7 +94,7 @@
                     <td style="width:5px;">
                         <form action="userdetail" method="get">
                             <input type="hidden" name="id" value="<%=list.getId()%>"/>
-                        <button class="btn btn-secondary" type="submit" name="action" value="info">Info</button>
+                            <button class="btn btn-secondary" type="submit" name="action" value="info">Info</button>
                         </form>
                     </td>
                 </tr>
@@ -121,6 +124,54 @@
                     <input type="hidden" name="action" value="delete"/>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Add user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="userdetail" method="post" class="form-inline" autocomplete="off">
+                    <input type="hidden" name="action" value="add"/>
+
+                    <div class="form-group mb-2">
+                        <label for="email" class="sr-only">Email</label>
+                        <input class="form-control" type="email" name="email" id="email" value=""
+                               placeholder="type email here">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="password" class="sr-only">surname</label>
+                        <input class="form-control" type="password" name="password" id="password" value=""
+                               placeholder="type password here">
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="addName" class="sr-only">Name</label>
+                        <input class="form-control" type="text" name="name" id="addName" value=""
+                               placeholder="type name here">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="addSurname" class="sr-only">surname</label>
+                        <input class="form-control" type="text" name="surname" id="addSurname" value=""
+                               placeholder="type surname here">
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+
+
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>
 

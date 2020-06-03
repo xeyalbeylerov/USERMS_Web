@@ -58,7 +58,7 @@ public class User implements Serializable {
     private String name;
     @Column(name = "surname")
     private String surname;
-    @Column(name = "email")
+    @Column(name = "email",unique=true)
     private String email;
     @Column(name = "phone")
     private String phone;
@@ -75,15 +75,15 @@ public class User implements Serializable {
     private Date birthDate;
     @Column(name = "address")
     private String address;
-    @OneToMany(cascade = CascadeType.REMOVE,mappedBy = "user", fetch = FetchType.LAZY)//UserId user olaraq deyisdi
+    @OneToMany(cascade = CascadeType.REMOVE,mappedBy = "user", fetch = FetchType.EAGER)//UserId user olaraq deyisdi
     private List<UserSkill> skills;//userSkillList skills oldu
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user")//UserId user olaraq deyisdi
     private List<EmployementHistory> employementHistoryList;
     @JoinColumn(name = "birthplace_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Country birthPlace;
     @JoinColumn(name = "nationality_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Country nationality;
 
     public User() {

@@ -12,6 +12,7 @@ import com.company.entity.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 /**
@@ -180,7 +181,11 @@ public class UserDaoImpl extends EntityManagerUtil implements UserDaoInter {
         u.setPassword(getHash(u.getPassword()));
         EntityManager em = em();
         em.getTransaction().begin();
-        em.persist(u);
+        try {
+            em.persist(u);
+        } catch (Exception ex) {
+            return false;
+        }
         em.getTransaction().commit();
         emClose(em);
         return true;

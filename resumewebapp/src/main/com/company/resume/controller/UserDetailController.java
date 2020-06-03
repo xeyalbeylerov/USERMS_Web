@@ -17,19 +17,21 @@ import java.util.Date;
 public class UserDetailController extends HttpServlet {
     private UserDaoInter userDao = Context.instanceUserDao();
 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.valueOf(request.getParameter("id"));
+
         String action = request.getParameter("action");
         if (action.equals("update")) {
+            int id = Integer.valueOf(request.getParameter("id"));
             String name = request.getParameter("name");
             String surname = request.getParameter("surname");
             String address = request.getParameter("address");
             String email = request.getParameter("email");
             String profileDesc = request.getParameter("profile_description");
-            String birth_date = request.getParameter("birth_date");
-            String birth_place = request.getParameter("birth_place");
+            String birth_date = request.getParameter("birthdate");
+            String birthplace = request.getParameter("birthplace");
             String phone = request.getParameter("phone");
             User user = userDao.getById(id);
             user.setName(name);
@@ -38,17 +40,30 @@ public class UserDetailController extends HttpServlet {
             user.setEmail(email);
             user.setProfileDesc(profileDesc);
 
-            Date date=null;
+            Date date = null;
             try {
-                SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-                date=sdf.parse(birth_date);
-            }catch (Exception ex){
-                date=user.getBirthDate();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                date = sdf.parse(birth_date);
+            } catch (Exception ex) {
+                date = user.getBirthDate();
             }
             user.setBirthDate(date);
             userDao.updateUser(user);
         } else if (action.equals("delete")) {
+            int id = Integer.valueOf(request.getParameter("id"));
             userDao.removeUser(id);
+        } else if (action.equals("add")) {
+            //add logic here
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String name = request.getParameter("name");
+            String surname = request.getParameter("surname");
+            User u = new User();
+            u.setEmail(email);
+            u.setPassword(password);
+            u.setName(name);
+            u.setSurname(surname);
+                boolean result=userDao.addUser(u);
         }
         response.sendRedirect("users");
     }
@@ -66,7 +81,7 @@ public class UserDetailController extends HttpServlet {
 
             User u = userDao.getById(userId);
             if (u == null) {
-                throw new IllegalArgumentException("There is no user with this id ="+userId);
+                throw new IllegalArgumentException("There is no user with this id =" + userId);
             }
 
             request.setAttribute("owner", true);
