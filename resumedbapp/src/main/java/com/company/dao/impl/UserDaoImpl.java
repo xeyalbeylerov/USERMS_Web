@@ -184,6 +184,8 @@ public class UserDaoImpl extends EntityManagerUtil implements UserDaoInter {
         try {
             em.persist(u);
         } catch (Exception ex) {
+            em.getTransaction().commit();
+            emClose(em);
             return false;
         }
         em.getTransaction().commit();

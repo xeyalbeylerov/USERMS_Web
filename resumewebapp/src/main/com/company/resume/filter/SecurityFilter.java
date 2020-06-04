@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebFilter(filterName = "JSPFileFilter2",urlPatterns = {"/*"})
+@WebFilter(filterName = "SecurityFilter",urlPatterns = {"/*"})
 public class SecurityFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
         try {

@@ -27,95 +27,110 @@
 //    }
 %>
 
-<div class="position-fixed">
+
     <%--<div class="p-2 my-flex-item text-right">1dwdwd</div>--%>
-    <form action="userdetail" method="post">
-        <input type="hidden" name="id" value="<%=u.getId()%>"/>
-        <input type="hidden" name="action" value="update"/>
-        <button type="submit" class="btn btn-warning text-right">Update</button>
 
-</div>
-<table class="table table-striped container">
-    <thead>
-    <tr>
-        <th scope="col" class="text-center" width="30%">#</th>
-        <th scope="col" class="text-center" width="70%">Details</th>
+        <form action="userdetail" method="post" class="form-inline" autocomplete="off">
 
-    </tr>
-    </thead>
-    <tbody>
-    <tr scope="row">
-        <td>Id</td>
-        <td><%=u.getId()%>
-        </td>
-    </tr>
-
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" value="<%=u.getName() == null ? "" : u.getName()%>"/>
-
-    <label for="surname">Surname</label>
-    <input type="text" id="surname" name="surname" value="<%=u.getSurname() == null ? "" : u.getSurname()%>"/>
-
-    <label for="address">Address</label>
-    <input type="text" id="address" name="address" value="<%=u.getAddress() == null ? "" : u.getAddress()%>"/>
-
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" value="<%=u.getEmail() == null ? "" : u.getEmail()%>"/>
+            <input type="hidden" name="id" value="<%=u.getId()%>"/>
+            <div class="position-fixed m-4">
+            <input type="hidden" name="action" value="update"/>
+            </div>
+            <button type="submit" class="btn btn-warning text-right">Update</button>
 
 
-    <%
+            <table class="table table-striped container col-4">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-center" width="30%">#</th>
+                    <th scope="col" class="text-center" width="70%">Details</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr scope="row">
+                    <td>Id</td>
+                    <td><%=u.getId()%>
+                    </td>
+                </tr>
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="<%=u.getName() == null ? "" : u.getName()%>"/>
+
+                <label for="surname">Surname</label>
+                <input type="text" id="surname" name="surname"
+                       value="<%=u.getSurname() == null ? "" : u.getSurname()%>"/>
+
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address"
+                       value="<%=u.getAddress() == null ? "" : u.getAddress()%>"/>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="<%=u.getEmail() == null ? "" : u.getEmail()%>"/>
+
+
+                    <%
         List<UserSkill> userSkills = u.getSkills();
         if (userSkills.size() == 0) {
             out.println("Skill is empty");
         } else {
     %><label for="skills">Skills</label><select id="skills" name="skills" size="<%=userSkills.size()%>"><%
-        for (UserSkill userSkill : userSkills) {
-    %>
-        <option value="<%=userSkill.getSkill().getId()%>"><%=userSkill.getSkill().getName()%>
-        </option>
-        <%
-            }
-        %></select><br><br><%
+                    for (UserSkill userSkill : userSkills) {
+                %>
+                    <option value="<%=userSkill.getSkill().getId()%>"><%=userSkill.getSkill().getName()%>
+                    </option>
+                    <%
+                        }
+                    %></select><br><br><%
         }
 
     %>
 
-        <%--<tr scope="row">--%>
-        <%--<td>Skills</td>--%>
-        <%--<td><input class="form-control" type="text" name="name" value="<%--%>
-        <%--List<UserSkill> userSkills=u.getSkills();--%>
-        <%--if(userSkills.size()==0){--%>
-        <%--out.println("Skill is empty");--%>
-        <%--}else {--%>
+                <%--<tr scope="row">--%>
+                <%--<td>Skills</td>--%>
+                <%--<td><input class="form-control" type="text" name="name" value="<%--%>
+                <%--List<UserSkill> userSkills=u.getSkills();--%>
+                <%--if(userSkills.size()==0){--%>
+                <%--out.println("Skill is empty");--%>
+                <%--}else {--%>
 
-        <%--for(UserSkill userSkill:userSkills){--%>
-        <%--out.println( userSkill.getSkill().getName());--%>
-        <%--}}--%>
+                <%--for(UserSkill userSkill:userSkills){--%>
+                <%--out.println( userSkill.getSkill().getName());--%>
+                <%--}}--%>
 
-        <%--%>"/></td>--%>
-        <%--&lt;%&ndash;<td><%=u.getSkills() == null ? "N/A" : u.getSkills()%>&ndash;%&gt;--%>
-        <%--&lt;%&ndash;</td>&ndash;%&gt;--%>
+                <%--%>"/></td>--%>
+                <%--&lt;%&ndash;<td><%=u.getSkills() == null ? "N/A" : u.getSkills()%>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;</td>&ndash;%&gt;--%>
 
-        <%--</tr>--%>
+                <%--</tr>--%>
 
-        <label for="profile_description">Profile description</label>
-        <input type="text" id="profile_description" name="profile_description"
-               value="<%=u.getProfileDesc() == null ? "" : u.getProfileDesc()%>"/>
 
-        <label for="birthdate">Birthdate</label>
-        <input type="date" id="birthdate" name="birthdate"
-               value="<%=u.getBirthDate() == null ? "" : u.getBirthDate()%>"/>
-    <%=u.getBirthDate() == null ? "" : u.getBirthDate()%>
-        <label for="birthplace">Birthplace</label>
-        <input type="text" id="birthplace" name="birthplace"
-               value="<%=u.getBirthPlace() == null ? "" : u.getBirthPlace().getName()%>"/>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="profile_description">Profile description</label>
+                    <input class="form-control" type="text" id="profile_description" name="profile_description"
+                           value="<%=u.getProfileDesc() == null ? "" : u.getProfileDesc()%>"/>
+                </div>
 
-        <label for="phone">Phone</label>
-        <input type="tel" id="phone" name="phone"
-               value="<%=u.getPhone() == null ? "" : u.getPhone()%>"/>
-    </form>
-    </tbody>
-</table>
+
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="birthdate">Birthdate</label>
+                    <input class="form-control" type="date" id="birthdate" name="birthdate"
+                           value="<%=u.getBirthDate() == null ? "" : u.getBirthDate()%>"/>
+                    <%=u.getBirthDate() == null ? "" : u.getBirthDate()%>
+                </div>
+
+                <label for="birthplace">Birthplace</label>
+                <input type="text" id="birthplace" name="birthplace"
+                       value="<%=u.getBirthPlace() == null ? "" : u.getBirthPlace().getName()%>"/>
+
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone"
+                       value="<%=u.getPhone() == null ? "" : u.getPhone()%>"/>
+        </form>
+
+        </tbody>
+        </table>
+
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
