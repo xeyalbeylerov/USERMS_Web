@@ -5,6 +5,7 @@
  */
 package com.company.entity;
 
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -34,18 +35,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "user")
-@XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-//    @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id"),
-//    @NamedQuery(name = "User.findByName", query = "SELECT u FROM User u WHERE u.name = :name"),
-//    @NamedQuery(name = "User.findBySurname", query = "SELECT u FROM User u WHERE u.surname = :surname"),
-//    @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email"),
-//    @NamedQuery(name = "User.findByPhone", query = "SELECT u FROM User u WHERE u.phone = :phone"),
-//    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
-//    @NamedQuery(name = "User.findByIsAdmin", query = "SELECT u FROM User u WHERE u.isAdmin = :isAdmin"),
-//    @NamedQuery(name = "User.findByBirthDate", query = "SELECT u FROM User u WHERE u.birthDate = :birthDate"),
-//    @NamedQuery(name = "User.findByAddress", query = "SELECT u FROM User u WHERE u.address = :address")})
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -162,7 +151,7 @@ public class User implements Serializable {
         this.profileDesc = profileDesc;
     }
 
-  
+
 
     public Date getBirthDate() {
         return birthDate;
@@ -180,7 +169,7 @@ public class User implements Serializable {
         this.address = address;
     }
 
-    @XmlTransient
+
    public List<UserSkill> getSkills() {
         return skills;
     }
@@ -188,7 +177,7 @@ public class User implements Serializable {
     public void setSkills(List<UserSkill> skills) {
         this.skills = skills;
     }
-    @XmlTransient
+
     public List<EmployementHistory> getEmployementHistoryList() {
         return employementHistoryList;
     }

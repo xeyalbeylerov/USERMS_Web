@@ -28,14 +28,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "employement_history")
-@XmlRootElement
-//@NamedQueries({
-//    @NamedQuery(name = "EmployementHistory.findAll", query = "SELECT e FROM EmployementHistory e"),
-//    @NamedQuery(name = "EmployementHistory.findById", query = "SELECT e FROM EmployementHistory e WHERE e.id = :id"),
-//    @NamedQuery(name = "EmployementHistory.findByHeader", query = "SELECT e FROM EmployementHistory e WHERE e.header = :header"),
-//    @NamedQuery(name = "EmployementHistory.findByBeginDate", query = "SELECT e FROM EmployementHistory e WHERE e.beginDate = :beginDate"),
-//    @NamedQuery(name = "EmployementHistory.findByEndDate", query = "SELECT e FROM EmployementHistory e WHERE e.endDate = :endDate"),
-//    @NamedQuery(name = "EmployementHistory.findByJobDescription", query = "SELECT e FROM EmployementHistory e WHERE e.jobDescription = :jobDescription")})
 public class EmployementHistory implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -26,11 +26,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "skill")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Skill.findAll", query = "SELECT s FROM Skill s"),
-    @NamedQuery(name = "Skill.findById", query = "SELECT s FROM Skill s WHERE s.id = :id"),
-    @NamedQuery(name = "Skill.findByName", query = "SELECT s FROM Skill s WHERE s.name = :name")})
 public class Skill implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -73,7 +68,7 @@ public class Skill implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
+
     public List<UserSkill> getUserSkillList() {
         return userSkillList;
     }

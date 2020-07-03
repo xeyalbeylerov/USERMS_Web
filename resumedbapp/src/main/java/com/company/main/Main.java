@@ -14,17 +14,17 @@ import com.company.entity.User;
  */
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
         UserDaoInter userdao = Context.instanceUserDao();
-User u =userdao.findByEmailAndPassword("xeyalbey@mail.ru4","123123");
+//User u =userdao.findByEmailAndPassword("test@mail.ru","123123");
 
-//        User u = new User();
-//        u.setName("Xeyal155");
-//        u.setEmail("xeyalbey@mail.ru4");
-//        u.setPassword("123123");
-//        userdao.updateUser(u);
+        User u = new User();
+        u.setName("test");
+        u.setEmail("test@mail.ru");
+        u.setPassword("123123");
+        userdao.addUser(u);
 
-        System.out.println(u.getName());
+
     }
 
 }

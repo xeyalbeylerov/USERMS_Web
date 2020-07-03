@@ -9,6 +9,8 @@ import java.util.List;
 import com.company.entity.User;
 import com.company.entity.UserSkill;
 
+import javax.persistence.EntityManager;
+
 /**
  *
  * @author xeyal

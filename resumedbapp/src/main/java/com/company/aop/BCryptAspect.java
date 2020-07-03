@@ -20,6 +20,7 @@ public class BCryptAspect {
     public Object passwordEncoderAroundAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object[] args = proceedingJoinPoint.getArgs();
         if (args.length > 0) {
+            System.out.println("AOP encoder working");
             User u = (User) args[0];
             String password = u.getPassword();
             u.setPassword(getHash(password));
@@ -35,7 +36,7 @@ public class BCryptAspect {
     }
 
     @Around("passwordVerifier()")
-    public Object passwordVerifierAroundAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public Object passwordVerifierAroundAdvice(ProceedingJoinPoint proceedingJoinPoint){
         Object[] args = proceedingJoinPoint.getArgs();
         boolean isVerify = false;
         if (args.length > 1) {
@@ -43,15 +44,13 @@ public class BCryptAspect {
             String hash = (String) args[1];
             isVerify = getVerify(password, hash);
         }
-        Object result = isVerify;
-        return result;
+        return isVerify;
     }
 
 //    BCrypt Hasher and Verifier
     private String getHash(String password) {
         BCrypt.Hasher crypt = BCrypt.withDefaults();
-        String saltedPassword = password;
-        return crypt.hashToString(4, saltedPassword.toCharArray());
+        return crypt.hashToString(4, password.toCharArray());
     }
 
     private boolean getVerify(String password, String hash) {
