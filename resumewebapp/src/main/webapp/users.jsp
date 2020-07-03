@@ -48,7 +48,8 @@
             <div class="form-group mb-2">
                 <input class="btn btn-primary" type="submit" name="search" value="Search">
 
-                <button onclick="idForAddModal()" class="btn btn-success mx-2" type="button" value="add" data-toggle="modal"
+                <button class="btn btn-success mx-2" type="button" value="add"
+                        data-toggle="modal"
                         data-target="#addModal">Add
                 </button>
             </div>
@@ -91,11 +92,18 @@
                         </button>
 
                     </td>
+                    <%--<td style="width:5px;">--%>
+                        <%--<form action="userdetail" method="get">--%>
+                            <%--<input type="hidden" name="id" value="<%=list.getId()%>"/>--%>
+                            <%--<button class="btn btn-secondary" type="submit" name="action" value="info">Info</button>--%>
+                        <%--</form>--%>
+                    <%--</td>--%>
                     <td style="width:5px;">
-                        <form action="userdetail" method="get">
-                            <input type="hidden" name="id" value="<%=list.getId()%>"/>
-                            <button class="btn btn-secondary" type="submit" name="action" value="info">Info</button>
-                        </form>
+                        <button onclick="idForInfoModal('<%=list.getId()%>')" class="btn btn-secondary" type="button"
+                                value="info" data-toggle="modal"
+                                data-target="#infoModal">Info
+                        </button>
+
                     </td>
                 </tr>
                 <%}%>
@@ -141,8 +149,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <form action="userdetail" method="post" class="form-inline" autocomplete="off">
             <div class="modal-body">
-                <form action="userdetail" method="post" class="form-inline" autocomplete="off">
                     <input type="hidden" name="action" value="add"/>
 
                     <div class="form-group mb-2">
@@ -172,12 +180,42 @@
 
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Add</button>
-                </form>
-            </div>
 
+            </div>
+            </form>
         </div>
     </div>
 </div>
+
+<!--Info Modal -->
+<%--<div class="modal fade" id="infoModal2" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel2"--%>
+     <%--aria-hidden="true">--%>
+    <%--<div class="modal-dialog" role="document">--%>
+        <%--<div class="modal-content">--%>
+            <%--<div class="modal-header">--%>
+                <%--<h5 class="modal-title" id="infoModalLabel2">Info user</h5>--%>
+                <%--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+                    <%--<span aria-hidden="true">&times;</span>--%>
+                <%--</button>--%>
+            <%--</div>--%>
+            <%--<div class="modal-body">--%>
+                <%--//module bod--%>
+                <%--<%--%>
+                    <%--User u = (User) request.getAttribute("user");--%>
+                <%--%>--%>
+
+                <%--<%=u.getName() == null ? "" : u.getName()%>"--%>
+
+
+            <%--</div>--%>
+            <%--<div class="modal-footer">--%>
+
+                <%--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
+            <%--</div>--%>
+
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 <script src="assets/js/users.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

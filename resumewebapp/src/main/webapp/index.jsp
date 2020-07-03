@@ -6,5 +6,6 @@
 <%User user=(User)session.getAttribute("loggedInUser");
 out.print("Welcome "+user.getName());
 %>
+<%="sd"%>
 </body>
 </html>

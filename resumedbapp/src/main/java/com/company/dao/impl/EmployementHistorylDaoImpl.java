@@ -13,8 +13,7 @@ import javax.persistence.TypedQuery;
 import java.util.*;
 
 /**
- *
- * @author xeyal
+ * @author Khayal Baylarov
  */
 public class EmployementHistorylDaoImpl extends EntityManagerUtil implements EmployementHistorylDaoInter {
 

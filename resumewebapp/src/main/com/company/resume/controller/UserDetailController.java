@@ -49,6 +49,11 @@ public class UserDetailController extends HttpServlet {
             }
             user.setBirthDate(date);
             userDao.updateUser(user);
+        } else if (action.equals("info")){
+            int id = Integer.valueOf(request.getParameter("id"));
+            User u = userDao.getById(id);
+            request.setAttribute("user", u);
+
         } else if (action.equals("delete")) {
             int id = Integer.valueOf(request.getParameter("id"));
             userDao.removeUser(id);
@@ -63,7 +68,7 @@ public class UserDetailController extends HttpServlet {
             u.setPassword(password);
             u.setName(name);
             u.setSurname(surname);
-                boolean result=userDao.addUser(u);
+            boolean result = userDao.addUser(u);
         }
         response.sendRedirect("users");
     }

@@ -12,7 +12,9 @@ import com.company.entity.Skill;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
-
+/**
+ * @author Khayal Baylarov
+ */
 public class SkillDaoImpl extends EntityManagerUtil implements SkillDaoInter {
 
     @Override

@@ -8,7 +8,9 @@ import com.company.entity.UserSkill;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
-
+/**
+ * @author Khayal Baylarov
+ */
 public class UserSkillDaoImpl extends EntityManagerUtil implements UserSkillDaoInter {
 
     @Override

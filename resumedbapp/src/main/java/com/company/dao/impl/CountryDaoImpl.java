@@ -1,14 +1,16 @@
 package com.company.dao.impl;
 
-import com.company.dao.inter.EntityManagerUtil;
 import com.company.dao.inter.CountryDaoInter;
+import com.company.dao.inter.EntityManagerUtil;
 import com.company.entity.Country;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-
+/**
+ * @author Khayal Baylarov
+ */
 public class CountryDaoImpl extends EntityManagerUtil implements CountryDaoInter {
 
     @Override
@@ -34,7 +36,7 @@ public class CountryDaoImpl extends EntityManagerUtil implements CountryDaoInter
         return (list.size() != 0) ? list.get(0) : null;
     }
 
-    //id,name,nationality alır və uyğun id-li obyekti tapıb özü umpdate edir.
+    //take id,name,nationality and update it
     @Override
     public boolean updateCountry(Country u) {
         EntityManager em = em();
@@ -45,7 +47,7 @@ public class CountryDaoImpl extends EntityManagerUtil implements CountryDaoInter
         return true;
     }
 
-    //id dəyəri olmayan Country alır və add edir.
+    //take country without id and add
     @Override
     public boolean insertCountry(Country country) {
         EntityManager em = em();
@@ -56,7 +58,6 @@ public class CountryDaoImpl extends EntityManagerUtil implements CountryDaoInter
         return true;
     }
 
-    //id alır və Country silir
     @Override
     public boolean removeCountry(int id) {
         EntityManager em = em();
